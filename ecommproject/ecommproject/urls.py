@@ -28,6 +28,8 @@ urlpatterns = [
     path('cartview/',views.CartView.as_view(),name="cartview"),
     path('detail/<int:id>',views.ProductDetailView.as_view(),name="detailview"),
     path('cart/<int:id>',views.AddToCartView.as_view(),name="add_cart"),
+    path('cartlist',views.CartView.as_view(),name="cart_view"),
+
 
 
 

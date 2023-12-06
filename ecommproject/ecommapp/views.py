@@ -67,11 +67,13 @@ class AddToCartView(FormView):
         quantity=request.POST.get("quantity")
         Cart.objects.create(user=user,product=product,quantity=quantity)
         return redirect("home")
-class CartView(ListView):
-    model=Cart
-    Template_name="cartview.html"
-    cotext_object_name="cart"
-    def get_queryset(self):
-        return Cart.objects.filter(user=self.request.user)
-
+class CartView(View):
+    # model=Cart
+    # Template_name="cartview.html"
+    # cotext_object_name="cart"
+    # def get_queryset(self):
+    #     return Cart.objects.filter(user=self.request.user)
+    def get(self,request,*args,**kwargs):
+        cart=Cart.objects.filter(user=self.request.user)
+        return render(request,"cartview.html",{"cart":cart})
 
