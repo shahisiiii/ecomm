@@ -35,6 +35,11 @@ class SignInView(FormView):
                 msg="Invalid Credentials"
                 messages.error(request,msg)
                 return render(request,'signin.html') 
+class SignOutView(View):
+    def get(self,request, *args, **kwargs):
+        logout(request)
+        return redirect('home')
+    
 class HomeView(TemplateView):
     template_name="home.html" 
 
