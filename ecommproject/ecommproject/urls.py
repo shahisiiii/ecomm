@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reg/',views.SignUpView.as_view(),name="reg"),
     path('log/',views.SignInView.as_view(),name="log"),
+    path('logout/',views.SignOutView.as_view(),name="logout"),
     path('',views.HomeView.as_view(),name="home"),
     path('cartview/',views.CartView.as_view(),name="cartview"),
     path('detail/<int:id>',views.ProductDetailView.as_view(),name="detailview"),

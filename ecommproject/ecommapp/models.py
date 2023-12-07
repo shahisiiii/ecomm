@@ -42,6 +42,7 @@ class Orders(models.Model):
 
     ) 
     status=models.CharField(max_length=100,choices=options,default="order-placed") 
+    address=models.TextField(max_length=255,default=False)
 
 class Reviews(models.Model):
     product=models.ForeignKey(Products,on_delete=models.CASCADE)

@@ -4,7 +4,7 @@
 <div class="container">
     {% for cart in cart %}
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-    <div class="col mb-5 ">
+    <div class="col-8 mb-5 ">
         <div class="card h-100">
             <!-- Sale badge-->
             {% comment %} <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div> {% endcomment %}
@@ -24,9 +24,14 @@
             
         </div>
     </div>
-    <div class="col">
+    <div class="col-2">
         <h6>STATUS;{{cart.status}}</h6>
-        <h6>{{QUANTITY:cart.quantity}}</h6>
+        <h6>QUANTITY:{{cart.quantity}}</h6>
+    </div>
+    <div class="col-2">
+        
+        <button ahref="" class=" btn btn-danger">remove</button>
+        <button href="" class=" btn btn-success">add</button>
     </div>
 </div>
         {% endfor %}

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from ecommapp.models import Cart
+from ecommapp.models import Cart,Orders
 from django.contrib.auth.forms import UserCreationForm
 
 class SignUpForm(UserCreationForm):
@@ -21,3 +21,8 @@ class CartForm(forms.ModelForm):
     class Meta:
         model=Cart
         fields=["quantity"]
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model=Orders
+        fields=["address"]
