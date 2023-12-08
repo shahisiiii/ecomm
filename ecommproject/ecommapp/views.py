@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from django.views.generic import View,CreateView,FormView,TemplateView,DetailView,ListView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-from ecommapp.forms import SignUpForm,SignInForm,CartForm
+from ecommapp.forms import SignUpForm,SignInForm,CartForm,OrderForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from ecommapp.models import Products,Cart
@@ -82,3 +82,6 @@ class CartView(View):
         cart=Cart.objects.filter(user=self.request.user)
         return render(request,"cartview.html",{"cart":cart})
 
+class PlaceOrderView(FormView):
+    template_name="place-order.html"
+    form_class=OrderForm

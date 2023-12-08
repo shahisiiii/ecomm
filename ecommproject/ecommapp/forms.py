@@ -25,4 +25,4 @@ class CartForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model=Orders
-        fields=["addresscre"]
+        fields=["address"]
