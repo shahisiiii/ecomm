@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from ecommapp.forms import SignUpForm,SignInForm,CartForm,OrderForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from ecommapp.models import Products,Cart
+from ecommapp.models import Products,Cart,Orders
 
 
 # Create your views here.
@@ -79,9 +79,21 @@ class CartView(View):
     # def get_queryset(self):
     #     return Cart.objects.filter(user=self.request.user)
     def get(self,request,*args,**kwargs):
-        cart=Cart.objects.filter(user=self.request.user)
+        cart=Cart.objects.filter(user=self.request.user).exclude(status="order-placed")
         return render(request,"cartview.html",{"cart":cart})
 
 class PlaceOrderView(FormView):
     template_name="place-order.html"
     form_class=OrderForm
+    def post(self,request,*args,**kwargs):
+        cart_id=kwargs.get("cid")
+        product_id=kwargs.get("pid")
+        cart=Cart.objects.get(id=cart_id)
+        product=Cart.objects.get(id=product_id)
+        user=request.user
+        address=request.POST.get("address")
+        Orders.objects.create(product_id=product_id,user=user,address=address)
+        cart.status="order-placed"
+        cart.save()
+        return redirect("cart_view")
+        

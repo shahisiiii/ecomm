@@ -25,13 +25,13 @@
         </div>
     </div>
     <div class="col-2">
-        <h6>STATUS;{{cart.status}}</h6>
-        <h6>QUANTITY:{{cart.quantity}}</h6>
+        <h6>STATUS : {{cart.status}}</h6>
+        <h6>QUANTITY : {{cart.quantity}}</h6>
     </div>
     <div class="col-2">
         
-        <button ahref="" class=" btn btn-danger">Remove</button>
-        <button href="{% url 'placeorder %'}" class=" btn btn-success">Buy</button>
+        <a href="" class="btn btn-success">Remove</a>        
+        <a href="{% url 'placeorder' cart.id cart.product.id %}" class="btn btn-success">Buy</a> 
     </div>
 </div>
         {% endfor %}
